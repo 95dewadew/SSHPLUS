@@ -1,14 +1,14 @@
 #!/bin/bash
-_lvk=$(wget -qO- https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Install/versao)
+_lvk=$(wget -qO- https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/versi)
 IP=$(wget -qO- ipv4.icanhazip.com/)
 IP2=$(wget -qO- http://whatismyip.akamai.com/)
 [[ "$IP" != "$IP2" ]] && ipdovps="$IP2" || ipdovps="$IP"
 echo -e "$ipdovps" > /etc/IP
 rm -rf /etc/SSHPlus/bot /etc/SSHPlus/ShellBot.sh /etc/SSHPlus/cabecalho /etc/SSHPlus/proxy.py > /dev/null 2>&1
-echo -e "America/Sao_Paulo" > /etc/timezone
-ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime > /dev/null 2>&1
+echo -e "Asia/Jakarta" > /etc/timezone
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime > /dev/null 2>&1
 dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1
-echo -e 'by: @crazy_vpn' > /usr/lib/sshplus && cat /usr/lib/sshplus > /usr/lib/licence
+echo -e 'SSH-MANAGER' > /usr/lib/sshplus && cat /usr/lib/sshplus > /usr/lib/licence
 [[ ! -d /etc/SSHPlus ]] && mkdir /etc/SSHPlus
 [[ ! -d /etc/SSHPlus/senha ]] && mkdir /etc/SSHPlus/senha
 [[ ! -e /etc/SSHPlus/Exp ]] && touch /etc/SSHPlus/Exp
@@ -19,17 +19,17 @@ grep -v "^PasswordAuthentication" /etc/ssh/sshd_config > /tmp/passlogin && mv /t
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 service ssh restart
 
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/addhost.sh -O /bin/addhost > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/addhost.sh -O /bin/addhost > /dev/null 2>&1
 chmod +x /bin/addhost
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/ajuda.sh -O /bin/ajuda > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/ajuda.sh -O /bin/ajuda > /dev/null 2>&1
 chmod +x /bin/ajuda
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/alterarlimite.sh -O /bin/alterarlimite > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/alternatiflimit.sh -O /bin/alterarlimite > /dev/null 2>&1
 chmod +x /bin/alterarlimite
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/alterarsenha.sh -O /bin/alterarsenha > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/gantipw.sh -O /bin/alterarsenha > /dev/null 2>&1
 chmod +x /bin/alterarsenha
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/attscript.sh -O /bin/attscript > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/updatescript.sh -O /bin/attscript > /dev/null 2>&1
 chmod +x /bin/attscript
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/badvpn.sh -O /bin/badvpn > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/badvpn.sh -O /bin/badvpn > /dev/null 2>&1
 chmod +x /bin/badvpn
 wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/banner.sh -O /bin/banner > /dev/null 2>&1
 chmod +x /bin/banner
