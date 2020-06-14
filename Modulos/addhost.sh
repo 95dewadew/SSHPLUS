@@ -25,11 +25,11 @@ else
 		else
 			if [[ $host != \.* ]]
 			then
-				tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Você deve adicionar um domínio iniciando-o com um ponto!" ; echo "Por exemplo: .phreaker56.xyz" ; echo "Não é necessário adicionar subdomínios para domínios que já estão no arquivo" ; echo "Ou seja, não é necessário adicionar recargawap.claro.com.br" ; echo "se o domínio .claro.com.br já estiver no arquivo." ; echo ""; tput sgr0
+				tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Anda harus menambahkan domain dengan memulainya dengan tanda titik!" ; echo "Contoh: .newbie.id" ; echo "Tidak perlu menambahkan subdomain untuk domain yang sudah ada dalam file"; echo ""; tput sgr0
 				exit 1
 			else
 				echo "$host" >> $payload && grep -v "^$" $payload > /tmp/a && mv /tmp/a $payload
-				tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Arquivo $payload atualizado, o domínio foi adicionado com sucesso:" ; tput sgr0
+				tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "$payload domain berhasil di tambahkan:" ; tput sgr0
 				tput setaf 3 ; tput bold ; echo "" ; cat $payload ; echo "" ; tput sgr0
 				if [ ! -f "/etc/init.d/squid3" ]
 				then
@@ -38,7 +38,7 @@ else
 				then
 					service squid reload
 				fi	
-				tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "O Proxy Squid Proxy foi recarregado com sucesso!" ; echo "" ; tput sgr0
+				tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "O Squid Proxy Proxy berhasil di muat ulang!" ; echo "" ; tput sgr0
 				exit 1
 			fi
 		fi
