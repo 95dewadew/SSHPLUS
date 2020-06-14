@@ -22,7 +22,7 @@ touch $HOME/fim
 
  tput civis
 
-echo -ne "   \033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+echo -ne "   \033[1;33mTUNGGU \033[1;37m- \033[1;33m["
 
 while true; do
 
@@ -44,7 +44,7 @@ while true; do
 
    tput dl1
 
-   echo -ne "   \033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+   echo -ne "   \033[1;33mTUNGGU \033[1;37m- \033[1;33m["
 
 done
 
