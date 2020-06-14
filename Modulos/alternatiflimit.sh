@@ -44,26 +44,26 @@ else
 			else
 				if (echo $sshnum | egrep [^0-9] &> /dev/null)
 				then
-					tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Você digitou um número inválido!" ; echo "" ; tput sgr0
+					tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Anda telah memasukkan nomor yang tidak valid!" ; echo "" ; tput sgr0
 					exit 1
 				else
 					if [[ $sshnum -lt 1 ]]
 					then
-						tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Você deve digitar um número maior que zero!" ; echo "" ; tput sgr0
+						tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Anda harus memasukkan angka lebih besar dari nol!" ; echo "" ; tput sgr0
 						exit 1
 					else
 						grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/a
 						sleep 1
 						mv /tmp/a /root/usuarios.db
 						echo $usuario $sshnum >> /root/usuarios.db
-						tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Limite aplicado para o usuário $usuario foi $sshnum " ; tput sgr0
+						tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Limit diterapkan untuk user $sshnum " ; tput sgr0
 						sleep 2
 						exit
 					fi
 				fi
 			fi			
 		else
-			tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "O usuário $usuario não foi encontrado" ; echo "" ; tput sgr0
+			tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "$usuario pengguna tidak ditemukan" ; echo "" ; tput sgr0
 			exit 1
 		fi
 	fi
