@@ -4,23 +4,23 @@ if [ -d "/etc/squid/" ]; then
 elif [ -d "/etc/squid3/" ]; then
 	payload="/etc/squid3/payload.txt"
 fi
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-10s\n' "Adicionar Host ao Squid Proxy" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-10s\n' "Tambahkan Host ke Squid Proxy" ; tput sgr0
 if [ ! -f "$payload" ]
 then
-	tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Arquivo $payload não encontrado" ; tput sgr0
+	tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Squid tidak di temukan atau belum terinstall" ; tput sgr0
 	exit 1
 else
-	tput setaf 2 ; tput bold ; echo ""; echo "Domínios atuais no arquivo $payload:" ; tput sgr0
+	tput setaf 2 ; tput bold ; echo ""; echo "Domain saat ini dalam file:" ; tput sgr0
 	tput setaf 3 ; tput bold ; echo "" ; cat $payload ; echo "" ; tput sgr0
-	read -p "Digite o domínio que deseja adicionar a lista: " host
+	read -p "Masukkan domain yang ingin Anda tambahkan ke daftar: " host
 	if [[ -z $host ]]
 	then
-		tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Você digitou um domínio vazio ou não existente!" ; echo "" ; tput sgr0
+		tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Anda memasukkan domain kosong atau tidak ada!" ; echo "" ; tput sgr0
 		exit 1
 	else
 		if [[ `grep -c "^$host" $payload` -eq 1 ]]
 		then
-			tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "O domínio $host já existe no arquivo $payload" ; echo "" ; tput sgr0
+			tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Domain $host sudah ada $payload" ; echo "" ; tput sgr0
 			exit 1
 		else
 			if [[ $host != \.* ]]
