@@ -31,15 +31,15 @@ wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/updatesc
 chmod +x /bin/attscript
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/badvpn.sh -O /bin/badvpn > /dev/null 2>&1
 chmod +x /bin/badvpn
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/banner.sh -O /bin/banner > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/banner.sh -O /bin/banner > /dev/null 2>&1
 chmod +x /bin/banner
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/blockt.sh -O /bin/blockt > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/blockt.sh -O /bin/blockt > /dev/null 2>&1
 chmod +x /bin/blockt
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/botssh.sh -O /bin/botssh > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/botssh.sh -O /bin/botssh > /dev/null 2>&1
 chmod +x /bin/botssh
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/conexao.sh -O /bin/conexao > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/konek.sh -O /bin/conexao > /dev/null 2>&1
 chmod +x /bin/conexao
-wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/criarteste.sh -O /bin/criarteste > /dev/null 2>&1
+wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/usertrial.sh -O /bin/criarteste > /dev/null 2>&1
 chmod +x /bin/criarteste
 wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Modulos/criarusuario.sh -O /bin/criarusuario > /dev/null 2>&1
 chmod +x /bin/criarusuario
