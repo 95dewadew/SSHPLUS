@@ -79,8 +79,8 @@ backbot=$1
 			echo ""
 			echo -e "\033[1;32mBACKUP BERHASIL DI BUAT !\033[0m"
 			echo ""
-			echo -ne "\033[1;32mGENERATE LINK DOWNLOAD \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read resp
-			if [[ "$resp" = "s" ]]; then
+			echo -ne "\033[1;32mGENERATE LINK DOWNLOAD \033[1;31m? \033[1;33m[y/n]:\033[1;37m "; read resp
+			if [[ "$resp" = "y" ]]; then
 				echo ""
 				fun_temp
 				echo ""
