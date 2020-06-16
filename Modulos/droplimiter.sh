@@ -35,7 +35,7 @@ done
 } 
 if [ ! -f "$database" ]
 then
-	echo "Arquivo /root/usuarios.db não encontrado"
+	echo "Arquivo /root/usuarios.db tidak ditemukan"
 	exit 1
 fi
 while true
