@@ -284,7 +284,7 @@ else
               tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Kata sandi singkat !, gunakan setidaknya 4 karakter" ; echo "" ; tput sgr0
               exit 1
             else  
-                echo -ne "\033[1;32mDias Para Expirar:\033[1;37m "; read dias
+                echo -ne "\033[1;32mMasa Aktif:\033[1;37m "; read dias
               if (echo $dias | egrep '[^0-9]' &> /dev/null)
               then
                 tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Anda telah memasukkan jumlah hari yang tidak valid!" ; echo "" ; tput sgr0
@@ -324,8 +324,8 @@ else
                           echo "$password" > /etc/SSHPlus/senha/$username
                           echo "$username $sshlimiter" >> /root/usuarios.db
                           if [[ -e /etc/openvpn/server.conf ]]; then
-                              echo -ne "\033[1;32mGerar Arquivo Ovpn \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read resp
-                              if [[ "$resp" = @(s|S) ]]; then
+                              echo -ne "\033[1;32mHasilkan File Ovpn\033[1;31m? \033[1;33m[y/n]:\033[1;37m "; read resp
+                              if [[ "$resp" = @(y|y) ]]; then
                                 rm $username.zip $username.ovpn > /dev/null 2>&1
                                 echo -ne "\033[1;32mHasilkan Dengan nama pengguna dan kata sandi \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read respost
                                 echo -ne "\033[1;32mHost saat ini\033[1;37m: \033[1;31m(\033[1;37m$Host\033[1;31m) \033[1;37m- \033[1;32mRubah \033[1;31m? \033[1;33m[s/n]:\033[1;37m "; read oprc
