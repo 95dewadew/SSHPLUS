@@ -66,7 +66,7 @@ echo ""
 echo "Tidak dapat memperoleh informasi"
 fi
 [[ ! -e /bin/versao ]] && rm -rf /etc/SSHPlus
-echo -e "\033[1;31m• \033[1;32mLAYANAN EKSEKUTIF\033[1;31m •\033[0m"
+echo -e "\033[1;31m• \033[1;32mLAYANAN AKTIF\033[1;31m •\033[0m"
 echo ""
 PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
 for porta in `echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq`; do
