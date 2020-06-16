@@ -10,7 +10,7 @@ ${comando[1]} -y > /dev/null 2>&1
 touch $HOME/fim
  ) > /dev/null 2>&1 &
  tput civis
-echo -ne "     \033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+echo -ne "     \033[1;33mTUNGGU \033[1;37m- \033[1;33m["
 while true; do
    for((i=0; i<18; i++)); do
    echo -ne "\033[1;31m#"
@@ -21,24 +21,24 @@ while true; do
    sleep 1s
    tput cuu1
    tput dl1
-   echo -ne "     \033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+   echo -ne "     \033[1;33mTUNGGU \033[1;37m- \033[1;33m["
 done
 echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
-echo -e "\E[44;1;37m                Otimizar Servidor                \E[0m"
+echo -e "\E[44;1;37m                Optimalkan Server                \E[0m"
 echo ""
 #
-echo -e "\033[1;32m               Atualizando pacotes\033[0m"
+echo -e "\033[1;32m               Memperbarui paket \033[0m"
 echo ""
 fun_bar 'apt-get update -y' 'apt-get upgrade -y'
 echo ""
-echo -e "\033[1;32m      Corrigindo problemas de dependências"
+echo -e "\033[1;32m      Memperbaiki masalah server"
 echo""
 fun_bar 'apt-get -f install'
 # Corrigir problemas de dependências, concluir instalação de pacotes pendentes e outros erros
 echo""
-echo -e "\033[1;32m            Removendo pacotes inúteis"
+echo -e "\033[1;32m            Menghapus paket yang tidak berguna"
 echo ""
 fun_bar 'apt-get autoremove -y' 'apt-get autoclean -y'
 # Remover pacotes instalados automaticamente e que não tem mais nenhuma utilidade para o sistema
@@ -46,7 +46,7 @@ fun_bar 'apt-get autoremove -y' 'apt-get autoclean -y'
 echo ""
 # Remove arquivos inúteis do cache, onde registra as cópias das atualizações q são instaladas pelo gerenciador de pacotes
 
-echo -e "\033[1;32m        Removendo pacotes com problemas"
+echo -e "\033[1;32m        Menghapus paket bermasalah"
 echo ""
 fun_bar 'apt-get -f remove -y' 'apt-get clean -y'
 #Remover pacotes com problemas
@@ -62,12 +62,12 @@ swap1=$(free -h | grep -i swap | awk {'print $2'})
 swap2=$(free -h | grep -i swap | awk {'print $4'})
 swap3=$(free -h | grep -i swap | awk {'print $3'})
 
-echo -e "\033[1;31m•\033[1;32mMemoria RAM\033[1;31m•\033[0m                    \033[1;31m•\033[1;32mSwap\033[1;31m•\033[0m"
+echo -e "\033[1;31m•\033[1;32mMemori RAM\033[1;31m•\033[0m                    \033[1;31m•\033[1;32mSwap\033[1;31m•\033[0m"
 echo -e " \033[1;33mTotal: \033[1;37m$ram1                   \033[1;33mTotal: \033[1;37m$swap1"
-echo -e " \033[1;33mEm Uso: \033[1;37m$ram3                  \033[1;33mEm Uso: \033[1;37m$swap3"
-echo -e " \033[1;33mLivre: \033[1;37m$ram2                   \033[1;33mLivre: \033[1;37m$swap2\033[0m"
+echo -e " \033[1;33mUsed: \033[1;37m$ram3                  \033[1;33mUsed: \033[1;37m$swap3"
+echo -e " \033[1;33mBebas: \033[1;37m$ram2                   \033[1;33mBebas: \033[1;37m$swap2\033[0m"
 echo ""
-echo -e "\033[1;37mMemória \033[1;32mRAM \033[1;37mAntes da Otimizacao:\033[1;36m" $MEM1% 
+echo -e "\033[1;37mMemori  \033[1;32mRAM \033[1;37mSebelum Pengoptimalan:\033[1;36m" $MEM1% 
 echo ""
 echo -e "\033[1;31m═══════════════════════════════════════════════\033[0m"
 sleep 3
@@ -98,7 +98,7 @@ helice ()
 	done
 	tput cnorm
 }
-echo -ne "\033[1;37mLIMPANDO MEMORIA \033[1;32mRAM \033[1;37me \033[1;32mSWAP\033[1;32m.\033[1;33m.\033[1;31m. \033[1;33m"
+echo -ne "\033[1;37mMEMBERSIHKAN MEMORI \033[1;32mRAM \033[1;37me \033[1;32mSWAP\033[1;32m.\033[1;33m.\033[1;31m. \033[1;33m"
 helice
 echo -e "\e[1DOk"
 }
@@ -115,13 +115,13 @@ swap1=$(free -h | grep -i swap | awk {'print $2'})
 swap2=$(free -h | grep -i swap | awk {'print $4'})
 swap3=$(free -h | grep -i swap | awk {'print $3'})
 
-echo -e "\033[1;31m•\033[1;32mMemoria RAM\033[1;31m•\033[0m                    \033[1;31m•\033[1;32mSwap\033[1;31m•\033[0m"
+echo -e "\033[1;31m•\033[1;32mMemori RAM\033[1;31m•\033[0m                    \033[1;31m•\033[1;32mSwap\033[1;31m•\033[0m"
 echo -e " \033[1;33mTotal: \033[1;37m$ram1                   \033[1;33mTotal: \033[1;37m$swap1"
-echo -e " \033[1;33mEm Uso: \033[1;37m$ram3                  \033[1;33mEm Uso: \033[1;37m$swap3"
-echo -e " \033[1;33mLivre: \033[1;37m$ram2                   \033[1;33mLivre: \033[1;37m$swap2\033[0m"
+echo -e " \033[1;33mUsed: \033[1;37m$ram3                  \033[1;33mUsed: \033[1;37m$swap3"
+echo -e " \033[1;33mBebas: \033[1;37m$ram2                   \033[1;33mBebas: \033[1;37m$swap2\033[0m"
 echo ""
-echo -e "\033[1;37mMemória \033[1;32mRAM \033[1;37mapós a Otimizacao:\033[1;36m" $MEM2% 
+echo -e "\033[1;37mMemori \033[1;32mRAM \033[1;37cara mengoptimalkan:\033[1;36m" $MEM2% 
 echo ""
-echo -e "\033[1;37mEconomia de :\033[1;31m `expr $MEM1 - $MEM2`%\033[0m"
+echo -e "\033[1;37mPenghematan :\033[1;31m `expr $MEM1 - $MEM2`%\033[0m"
 
 echo -e "\033[1;32m═══════════════════════════════════════════════\033[0m"
