@@ -243,7 +243,7 @@ fun_edithost () {
 [[ ! -e /usr/lib/sshplus ]] && rm -rf /bin/ > /dev/null 2>&1
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "Buat pengguna SSH" ; tput sgr0
 echo ""
-echo -ne "\033[1;32mNome do usuário:\033[1;37m "; read username
+echo -ne "\033[1;32mUser Name:\033[1;37m "; read username
 awk -F : ' { print $1 }' /etc/passwd > /tmp/users 
 if grep -Fxq "$username" /tmp/users
 then
