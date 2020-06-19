@@ -572,7 +572,7 @@ elif [[ -e /etc/centos-release || -e /etc/redhat-release ]]; then
 	GROUPNAME=nobody
 	RCLOCAL='/etc/rc.d/rc.local'
 else
-	echo -e "BUKAN SISTEM YANG DIDUKUNGO"
+	echo -e "BUKAN SISTEM YANG DIDUKUNG"
 	exit 5
 fi
 
@@ -580,13 +580,13 @@ newclient () {
 	# Generates the custom client.ovpn
 	cp /etc/openvpn/client-common.txt ~/$1.ovpn
 	echo "<ca>" >> ~/$1.ovpn
-	cat /etc/openvpn/easy-rsa/pki/ca.crt >> ~/$1.ovpn
+	cat /etc/openvpn/ca.crt >> ~/$1.ovpn
 	echo "</ca>" >> ~/$1.ovpn
 	echo "<cert>" >> ~/$1.ovpn
-	cat /etc/openvpn/easy-rsa/pki/issued/$1.crt >> ~/$1.ovpn
+	cat /etc/openvpn/$1.crt >> ~/$1.ovpn
 	echo "</cert>" >> ~/$1.ovpn
 	echo "<key>" >> ~/$1.ovpn
-	cat /etc/openvpn/easy-rsa/pki/private/$1.key >> ~/$1.ovpn
+	cat /etc/openvpn/$1.key >> ~/$1.ovpn
 	echo "</key>" >> ~/$1.ovpn
 	echo "<tls-auth>" >> ~/$1.ovpn
 	cat /etc/openvpn/ta.key >> ~/$1.ovpn
@@ -988,7 +988,7 @@ else
 	sleep 2
 	verif_ptrs $porta
 	echo ""
-	echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;33mSistema"
+	echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;33mSistem"
 	echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;33mGoogle (\033[1;32mRecomend\033[1;33m)"
 	echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;33mOpenDNS"
 	echo -e "\033[1;31m[\033[1;36m4\033[1;31m] \033[1;33mCloudflare"
@@ -1038,26 +1038,11 @@ else
 	# Adquirindo easy-rsa
 	echo ""
 	fun_dep () {
-	wget -O ~/EasyRSA-3.0.1.tgz "https://github.com/OpenVPN/easy-rsa/releases/download/3.0.1/EasyRSA-3.0.1.tgz"
-	tar xzf ~/EasyRSA-3.0.1.tgz -C ~/
-	mv ~/EasyRSA-3.0.1/ /etc/openvpn/
-	mv /etc/openvpn/EasyRSA-3.0.1/ /etc/openvpn/easy-rsa/
-	chown -R root:root /etc/openvpn/easy-rsa/
-	rm -rf ~/EasyRSA-3.0.1.tgz
-	cd /etc/openvpn/easy-rsa/
-	# Create the PKI, set up the CA, the DH params and the server + client certificates
-	./easyrsa init-pki
-	./easyrsa --batch build-ca nopass
-	./easyrsa gen-dh
-	./easyrsa build-server-full server nopass
-	./easyrsa build-client-full SSHPLUS nopass
-	./easyrsa gen-crl
-	# Move the stuff we need
-	cp pki/ca.crt pki/private/ca.key pki/dh.pem pki/issued/server.crt pki/private/server.key /etc/openvpn/easy-rsa/pki/crl.pem /etc/openvpn
-	# CRL is read with each client connection, when OpenVPN is dropped to nobody
-	chown nobody:$GROUPNAME /etc/openvpn/crl.pem
-	# Generando key for tls-auth
-	openvpn --genkey --secret /etc/openvpn/ta.key
+	wget -O /etc/openvpn/ubuntu.tar "https://jagoanssh.com/file/sc/openvpn/ubuntu.tar"
+	cd /etc/openvpn/
+	tar xf ubuntu.tar
+	chown -R root:root /etc/openvpn/
+	cd /etc/openvpn/
 	# Generando server.conf
 	echo "port $porta
 proto $PROTOCOL
@@ -1067,8 +1052,9 @@ rcvbuf 0
 ca ca.crt
 cert server.crt
 key server.key
-dh dh.pem
+dh dh2048.pem
 tls-auth ta.key 0
+key-direction 0
 topology subnet
 server 10.8.0.0 255.255.255.0
 ifconfig-pool-persist ipp.txt" > /etc/openvpn/server.conf
@@ -1207,10 +1193,7 @@ dev tun
 proto $PROTOCOL
 sndbuf 0
 rcvbuf 0
-setenv opt method GET
-remote /SSHPLUS? $porta
-http-proxy-option CUSTOM-HEADER Host portalrecarga.vivo.com.br/recarga
-http-proxy $IP 80
+remote $IP2 $porta
 resolv-retry 5
 nobind
 persist-key
