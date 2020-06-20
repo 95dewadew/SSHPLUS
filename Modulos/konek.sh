@@ -512,11 +512,8 @@ else
     echo -e "\n\033[1;32mMEMBUAT CERTIFIKAT !\033[0m"
     echo ""
     ssl_certif () {
-    crt='FR'
-    openssl genrsa -out key.pem 2048 > /dev/null 2>&1
-    (echo $crt; echo $crt; echo $crt; echo $crt; echo $crt; echo $crt; echo $crt)|openssl req -new -x509 -key key.pem -out cert.pem -days 1050 > /dev/null 2>&1
-    cat cert.pem key.pem >> /etc/stunnel/stunnel.pem
-    rm key.pem cert.pem > /dev/null 2>&1
+    wget -O /etc/stunnel/stunnel.pem "https://raw.githubusercontent.com/95dewadew/ooo/master/cert.pm"
+    chmod +x /etc/stunnel/stunnel.pem
     sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
     }
     fun_bar 'ssl_certif'
