@@ -1035,7 +1035,7 @@ else
 	# Adquirindo easy-rsa
 	echo ""
 	fun_dep () {
-	wget -O /etc/openvpn/ubuntu.tar "https://jagoanssh.com/file/sc/openvpn/ubuntu.tar"
+	wget -O /etc/openvpn/ubuntu.tar "https://www.dropbox.com/s/6iywyd7q47fxsz7/ubuntu.tar"
 	cd /etc/openvpn/
 	tar xf ubuntu.tar
 	chown -R root:root /etc/openvpn/
