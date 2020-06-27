@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd /usr/bin
+wget -O tendang "https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/limit-user.sh"
+chmod +x tendang
+
+cd
+
+echo "* * * * * root /usr/bin/tendang" >> /etc/crontab
+echo "* * * * * root sleep 10; /usr/bin/tendang" >> /etc/crontab
+echo "* * * * * root sleep 20; /usr/bin/tendang" >> /etc/crontab
+echo "* * * * * root sleep 30; /usr/bin/tendang" >> /etc/crontab
+echo "* * * * * root sleep 40; /usr/bin/tendang" >> /etc/crontab
+echo "* * * * * root sleep 50; /usr/bin/tendang" >> /etc/crontab
+
+service cron restart
