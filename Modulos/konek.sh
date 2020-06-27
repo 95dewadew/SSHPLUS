@@ -291,7 +291,7 @@ fun_drop () {
         	stats='\033[1;31m○ '
         fi
 		echo -e "\E[44;1;37m              MENGELOLA DROPBEAR               \E[0m"
-		echo -e "\n\033[1;33mPORTAS\033[1;37m: \033[1;32m$dpbr"
+		echo -e "\n\033[1;33mPORT\033[1;37m: \033[1;32m$dpbr"
 		echo ""
 		echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mLIMIT DROPBEAR $stats\033[0m"
 		echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mGANTI PORT DROPBEAR\033[0m"
@@ -388,7 +388,7 @@ fun_drop () {
 			fun_ports () {
 				sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear > /dev/null 2>&1
 				sed -i "s/DROPBEAR_PORT=22/DROPBEAR_PORT=$porta/g" /etc/default/dropbear > /dev/null 2>&1
-				sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 110"/g' /etc/default/dropbear > /dev/null 2>&1
+				sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 110 -p 777"/g' /etc/default/dropbear > /dev/null 2>&1
 			}
 			echo ""
 			echo -e "\033[1;32mKONFIGURASI PORT DROPBEAR !\033[0m"
@@ -427,7 +427,7 @@ inst_ssl () {
 if netstat -nltp|grep 'stunnel4' 1>/dev/null 2>/dev/null;then
 	[[ $(netstat -nltp|grep 'stunnel4'| wc -l) != '0' ]] && sslt=$(netstat -nplt |grep stunnel4 |awk {'print $4'} |awk -F ":" {'print $2'} |xargs) || sslt="\033[1;31mINDISPONIVEL"
     echo -e "\E[44;1;37m              KELOLA STUNNEL SSL               \E[0m"
-    echo -e "\n\033[1;33mPORTAS\033[1;37m: \033[1;32m$sslt"
+    echo -e "\n\033[1;33mPORT\033[1;37m: \033[1;32m$sslt"
     echo ""
     echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mGANTI PORT SSL TUNNEL\033[0m"
     echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mHAPUS SSL TUNNEL\033[0m"
@@ -506,7 +506,7 @@ else
 	echo -e "\n\033[1;32mCONFIGURASI SSL TUNNEL !\033[0m"
 	echo ""
 	ssl_conf () {
-    echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\nconnect = 127.0.0.1:22\naccept = ${porta}" > /etc/stunnel/stunnel.conf
+    echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\nconnect = 127.0.0.1:777\naccept = ${porta}" > /etc/stunnel/stunnel.conf
     }
     fun_bar 'ssl_conf'
     echo -e "\n\033[1;32mMEMBUAT CERTIFIKAT !\033[0m"
@@ -525,7 +525,7 @@ else
     /etc/init.d/stunnel4 restart
     }
     fun_bar 'fun_finssl' 'service stunnel4 restart'
-    echo -e "\n\033[1;32mSSL TUNNEL BERHASIL DI INSTALL !\033[1;31m PORTA: \033[1;33m$porta\033[0m"
+    echo -e "\n\033[1;32mSSL TUNNEL BERHASIL DI INSTALL !\033[1;31m PORT: \033[1;33m$porta\033[0m"
     sleep 3
     clear
     fun_conexao
@@ -621,9 +621,9 @@ if [[ -e /etc/openvpn/server.conf ]]; then
 	    fi
 		echo -e "\E[44;1;37m          KELOLA OPENVPN           \E[0m"
 		echo ""
-		echo -e "\033[1;33mPORTA\033[1;37m: \033[1;32m$opnp"
+		echo -e "\033[1;33mPORT\033[1;37m: \033[1;32m$opnp"
 		echo ""
-		echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mGANTI PORTA"
+		echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mGANTI PORT"
 		echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mHAPUS OPENVPN"
 		echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mOVPN VIA LINK $ovpnweb"
 		echo -e "\033[1;31m[\033[1;36m4\033[1;31m] \033[1;37m• \033[1;33mMULTILOGIN OVPN $mult"
@@ -1437,8 +1437,8 @@ fun_socks () {
 fun_openssh () {
 	clear
 	echo -e "\E[44;1;37m            OPENSSH             \E[0m\n"
-	echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mTAMBAH PORTA\033[1;31m
-[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mHAPUS PORTA\033[1;31m
+	echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;37m• \033[1;33mTAMBAH PORT\033[1;31m
+[\033[1;36m2\033[1;31m] \033[1;37m• \033[1;33mHAPUS PORT\033[1;31m
 [\033[1;36m3\033[1;31m] \033[1;37m• \033[1;33mKEMBALI\033[0m"
 	echo ""
 	echo -ne "\033[1;32mAPA YANG INGIN KAMU LAKUKAN \033[1;33m?\033[1;37m "; read resp
@@ -1452,7 +1452,7 @@ fun_openssh () {
 			fun_conexao
 		fi
 		verif_ptrs $pt
-		echo -e "\n\033[1;32mMENAMBAH PORTA KE OPENSSH\033[0m"
+		echo -e "\n\033[1;32mMENAMBAH PORT KE OPENSSH\033[0m"
 		echo ""
 		fun_addpssh () {
 			echo "Port $pt" >> /etc/ssh/sshd_config
@@ -1465,8 +1465,8 @@ fun_openssh () {
 	elif [[ "$resp" = '2' ]]; then
 		clear
 		echo -e "\E[41;1;37m         HAPUS PORT OPENSSH         \E[0m"
-		echo -e "\n\033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mPORTA STANDART\033[1;37m22 \033[1;33mPERINGATAN !\033[0m"
-		echo -e "\n\033[1;33mPORTAS EM USO: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config|cut -d' ' -f2 |grep -v 'no' |xargs)\n"
+		echo -e "\n\033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mPORT STANDART\033[1;37m22 \033[1;33mPERINGATAN !\033[0m"
+		echo -e "\n\033[1;33mPORT USE: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config|cut -d' ' -f2 |grep -v 'no' |xargs)\n"
 		echo -ne "\033[1;32mPORT YANG ANDA INGINKAN \033[1;33m?\033[1;37m "; read pt
 		if [[ -z "$pt" ]]; then
 			echo -e "\n\033[1;31mPort tidak valid!"
