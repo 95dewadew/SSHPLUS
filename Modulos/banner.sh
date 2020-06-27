@@ -15,7 +15,8 @@ echo -e "\E[44;1;37m             BANNER             \E[0m"
 echo ""
 echo -e "\033[1;31m[\033[1;36m1\033[1;31m]\033[1;37m • \033[1;33mTAMBAH BANNER"
 echo -e "\033[1;31m[\033[1;36m2\033[1;31m]\033[1;37m • \033[1;33mHAPUS BANNER"
-echo -e "\033[1;31m[\033[1;36m3\033[1;31m]\033[1;37m • \033[1;33mKEMBALI"
+echo -e "\033[1;31m[\033[1;36m3\033[1;31m]\033[1;37m • \033[1;33mDEFAULT"
+echo -e "\033[1;31m[\033[1;36m4\033[1;31m]\033[1;37m • \033[1;33mKEMBALI"
 echo ""
 echo -ne "\033[1;32mAPA YANG INGIN KAMU LAKUKAN\033[1;31m ?\033[1;37m : "; read resp
 if [[ "$resp" = "1" ]]; then
@@ -94,6 +95,11 @@ elif [[ "$resp" = "2" ]]; then
 	sleep 2
 	menu
 elif [[ "$resp" = "3" ]]; then
+	wget -O $local https://www.dropbox.com/s/v0owpzby15t9x5k/banner > /dev/null 2>&1
+	service ssh restart > /dev/null 2>&1 && service dropbear restart > /dev/null 2>&1
+	echo -e "\n\033[1;32mBANNER DITETAPKAN !\033[0m"
+        unset ban_cor
+elif [[ "$resp" = "4" ]]; then
 	menu
 else
 	echo -e "\n\033[1;31mOpsi tidak valid !\033[0m"
