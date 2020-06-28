@@ -132,7 +132,7 @@ http_access allow url2
 http_access allow url3
 http_access allow url4
 http_access allow payload
-#http_access deny all
+http_access allow all
  
 #Portas" > $var_sqd
 for Pts in $(echo -e $portass); do
