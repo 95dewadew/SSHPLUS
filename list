@@ -29,7 +29,7 @@ wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/gantipw.
 chmod +x /bin/alterarsenha
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/updatescript.sh -O /bin/attscript > /dev/null 2>&1
 chmod +x /bin/attscript
-wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/badvpn.sh -O /bin/badvpn > /dev/null 2>&1
+wget https://www.dropbox.com/s/vbl8wm7pzxcbxjb/badvpn.sh -O /bin/badvpn > /dev/null 2>&1
 chmod +x /bin/badvpn
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/banner.sh -O /bin/banner > /dev/null 2>&1
 chmod +x /bin/banner
