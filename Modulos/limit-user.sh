@@ -45,6 +45,7 @@ case $PARAM in
 	rm -f /tmp/user1
 	service dropbear start
         service dropbear restart
+	service sslh restrat
 	exit 0
 ;;
 2)
@@ -75,6 +76,7 @@ case $PARAM in
 	rm -f /tmp/user2
 	service dropbear start
         service dropbear restart
+	service sslh restrat
 	exit 0
 ;;
 *)
