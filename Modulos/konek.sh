@@ -1109,7 +1109,7 @@ persist-tun
 status openvpn-status.log
 management localhost 7505
 verb 3
-crl-verify crl.pem
+#crl-verify crl.pem
 client-to-client
 client-cert-not-required
 username-as-common-name
