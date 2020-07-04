@@ -43,6 +43,8 @@ case $PARAM in
 	rm -f /tmp/pids
 	rm -f /tmp/sks
 	rm -f /tmp/user1
+	service sshd start
+	service sshd restart
 	exit 0
 ;;
 2)
@@ -71,6 +73,8 @@ case $PARAM in
 	rm -f /tmp/sks
 	rm -f /tmp/user1
 	rm -f /tmp/user2
+	service sshd start
+	service sshd restart
 	exit 0
 ;;
 *)
