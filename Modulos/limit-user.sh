@@ -76,7 +76,7 @@ case $PARAM in
 	rm -f /tmp/user2
 	service dropbear start
         service dropbear restart
-	service sslh restrat
+	service sslh restart
 	exit 0
 ;;
 *)
