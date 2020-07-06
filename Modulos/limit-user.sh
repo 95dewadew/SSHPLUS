@@ -15,7 +15,7 @@ var=`cat /tmp/sks | grep -i $1`
 set -- $var
 l=$6
 if [ "$6" != '' ]; then
-echo "$p $l" | cat - /tmp/pid2 > /tmp/temp && mv /tmp/temp /tmp/                                                                                                                                                             pid2
+echo "$p $l" | cat - /tmp/pid2 > /tmp/temp && mv /tmp/temp /tmp/pid2
 fi
 done
 echo -n > /tmp/user1
