@@ -44,5 +44,6 @@ rm -f /tmp/sks
 rm -f /tmp/user1
 rm -f /tmp/user2
 service dropbear start
-service sslh start
+service sslh restart
+service dropbear restart
 exit 0
