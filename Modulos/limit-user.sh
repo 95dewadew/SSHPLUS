@@ -41,7 +41,6 @@ rm -f /tmp/pid
 rm -f /tmp/pid2
 rm -f /tmp/pids
 rm -f /tmp/sks
-rm -f /tmp/user1
 rm -f /tmp/user2
 service dropbear start
 service sslh restart
