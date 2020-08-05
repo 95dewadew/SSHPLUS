@@ -1,6 +1,6 @@
 #!/bin/bash
+while true;do
 PARAM=$1
-
 echo -n > /tmp/pid2
 ps ax|grep dropbear > /tmp/pid
 cat /tmp/pid | grep -i 'dropbear -p' > /tmp/pids
@@ -42,7 +42,6 @@ rm -f /tmp/pid2
 rm -f /tmp/pids
 rm -f /tmp/sks
 rm -f /tmp/user2
-service dropbear start
-service sslh restart
-service dropbear restart
-exit 0
+date ;
+sleep 10;
+done
