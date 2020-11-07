@@ -5,10 +5,8 @@ for((i=1; i<=$totalaccounts; i++ ))
        do  
 username=`cat /var/lib/pp/data-user-pp | awk '{print $1}' | head -n $i | tail -n 1`
 userpass=`cat /var/lib/pp/data-user-pp | awk '{print $3}' | head -n $i | tail -n 1`
-saat_expired=`cat /var/lib/pp/data-user-pp | awk '{print $5}' | head -n $i | tail -n 1`
-tanggal_expired=$(date -u --date="1970-01-01 $saat_expired sec GMT" +%Y/%m/%d)
-tanggal_expired_display=$(date -u --date="1970-01-01 $saat_expired sec GMT" '+%d %B %Y')
-echo "User : $username Password ($userpass) Expired : $tanggal_expired_display" >> /tmp/alluser-pp-data
+expired=`cat /var/lib/pp/data-user-pp | awk '{print $5}' | head -n $i | tail -n 1`
+echo "User : $username Password ($userpass) Expired : $expired" >> /tmp/alluser-pp-data
 done
 clear
 echo "loading..."
