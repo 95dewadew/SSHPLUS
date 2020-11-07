@@ -1,0 +1,21 @@
+#!/bin/bash
+read -p "Masukkan Username yang ingin anda hapus: " username
+grep -E "^$username" /etc/ppp/chap-secrets >/dev/null
+if [ $? -eq 0 ]; then
+# proses mengganti passwordnya
+username2="/$username/d";
+sed -i $username2 /etc/ppp/chap-secrets
+sed -i $username2 /var/lib/pp/data-user-pp
+sed -i '/^$/d' /etc/ppp/chap-secrets
+sed -i '/^$/d' /var/lib/pp/data-user-pp
+clear
+  echo ""
+  echo " "
+  echo "-----------------------------------------------"
+  echo -e "Username ${blue}$username${NC} Sudah berhasil di ${red}HAPUS${NC}."
+  echo -e "Akses Login untuk username ${blue}$username${NC} sudah dihapus"
+  echo "-----------------------------------------------"
+else
+echo "Username tidak ditemukan di server anda"
+    exit 1
+fi
