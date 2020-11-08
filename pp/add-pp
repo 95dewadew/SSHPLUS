@@ -29,7 +29,7 @@ echo "Creating Password for $username"
 sleep 0.3
 MYIP=$(wget -qO- ipv4.icanhazip.com)
 echo "$username	*	$password	*" >> /etc/ppp/chap-secrets
-echo "$username *   $password   *  $expired"  >> /var/lib/premium-script/data-user-pptp
+echo "$username *   $password   *  $expired"  >> /var/lib/pp/data-user-pp
   clear
   echo ""
   echo ""
