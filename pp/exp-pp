@@ -2,7 +2,7 @@
 echo "echo "List User"" > /usr/local/bin/infouser-pp
 echo "echo "List User"" > /usr/local/bin/expireduser-pp
 chmod +x /usr/local/bin/infouser-pp
-chmod +x /usr/local/bin/expireduser
+chmod +x /usr/local/bin/expireduser-pp
 chmod +x /etc/ppp/chap-secrets
 chmod +x /var/lib/pp/data-user-pp
 
