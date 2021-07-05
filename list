@@ -87,7 +87,7 @@ wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/bot.sh -
 chmod +x /etc/SSHPlus/bot
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/cabecalho.sh -O /etc/SSHPlus/cabecalho > /dev/null 2>&1
 chmod +x /etc/SSHPlus/cabecalho
-wget https://www.dropbox.com/s/rlnimlocxexmkeb/socks.py -O /etc/SSHPlus/proxy.py > /dev/null 2>&1
+wget https://www.dropbox.com/s/sosedojb2wp5vus/websocket.py > /dev/null 2>&1
 chmod +x /etc/SSHPlus/proxy.py
 
 [[ ! -d /etc/bot ]] && mkdir /etc/bot
