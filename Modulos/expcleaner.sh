@@ -30,8 +30,8 @@ for user in $(awk -F: '{print $1}' /etc/passwd); do
 	echo $diff|grep -q ^\- && echo "AKTIF   TIDAK DIHAPUS" && continue
 	tput setaf 1 ; tput bold
 	echo "STATUS  TELAH DIHAPUS"
-	pkill -f $user
-	userdel --force $user
+	#pkill -f $user
+	userdel $user
 	grep -v ^$user[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 	if [[ -e /etc/openvpn/server.conf ]]; then
 		remove_ovp $user
