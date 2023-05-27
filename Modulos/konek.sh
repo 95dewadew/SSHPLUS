@@ -764,9 +764,9 @@ if [[ -e /etc/openvpn/server.conf ]]; then
             else
             	clear
             	fun_apchon () {
-            		apt-get install apache2 zip -y
-            		sed -i "s/Listen 80/Listen 81/g" /etc/apache2/ports.conf
-            		service apache2 restart
+            		#apt-get install apache2 zip -y
+            		#sed -i "s/Listen 80/Listen 81/g" /etc/apache2/ports.conf
+            		#service apache2 restart
             		if [ ! -d /var/www/html ]; then
             			mkdir /var/www/html
             		fi
@@ -1107,13 +1107,14 @@ group $GROUPNAME
 persist-key
 persist-tun
 status openvpn-status.log
-management localhost 7505
+#management localhost 7505
 verb 3
 #crl-verify crl.pem
 client-to-client
 client-cert-not-required
 username-as-common-name
-plugin /usr/lib/openvpn/openvpn-plugin-auth-pam.so login" >> /etc/openvpn/server.conf
+#plugin /usr/lib/openvpn/openvpn-plugin-auth-pam.so login
+plugin /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so login" >> /etc/openvpn/server.conf
 	# Enable net.ipv4.ip_forward for the system
 	sed -i '/\<net.ipv4.ip_forward\>/c\net.ipv4.ip_forward=1' /etc/sysctl.conf
 	if ! grep -q "\<net.ipv4.ip_forward\>" /etc/sysctl.conf; then
@@ -1223,11 +1224,11 @@ fi
 sed -i '$ i\echo 1 > /proc/sys/net/ipv4/ip_forward' /etc/rc.local
 sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 sed -i '$ i\iptables -A INPUT -p tcp --dport 25 -j DROP' /etc/rc.local
-sed -i '$ i\iptables -A INPUT -p tcp --dport 110 -j DROP' /etc/rc.local
+#sed -i '$ i\iptables -A INPUT -p tcp --dport 110 -j DROP' /etc/rc.local
 sed -i '$ i\iptables -A OUTPUT -p tcp --dport 25 -j DROP' /etc/rc.local
-sed -i '$ i\iptables -A OUTPUT -p tcp --dport 110 -j DROP' /etc/rc.local
+#sed -i '$ i\iptables -A OUTPUT -p tcp --dport 110 -j DROP' /etc/rc.local
 sed -i '$ i\iptables -A FORWARD -p tcp --dport 25 -j DROP' /etc/rc.local
-sed -i '$ i\iptables -A FORWARD -p tcp --dport 110 -j DROP' /etc/rc.local
+#sed -i '$ i\iptables -A FORWARD -p tcp --dport 110 -j DROP' /etc/rc.local
 sleep 3
 fun_conexao
 }
@@ -1523,7 +1524,7 @@ fun_sslh () {
             [[ -e "/etc/stunnel/stunnel.conf" ]] && ptssl="$(netstat -nplt |grep 'stunnel' | awk {'print $4'} |cut -d: -f2 |xargs)" || ptssl='3128'
             [[ -e "/etc/openvpn/server.conf" ]] && ptvpn="$(netstat -nplt |grep 'openvpn' |awk {'print $4'} |cut -d: -f2 |xargs)" || ptvpn='1194'
             DEBIAN_FRONTEND=noninteractive apt-get -y install sslh
-            echo -e "#Modo autónomo\n\nRUN=yes\n\nDAEMON=/usr/sbin/sslh\n\nDAEMON_OPTS='--user sslh --listen 0.0.0.0:443 --ssh 127.0.0.1:22 --ssl 127.0.0.1:$ptssl --http 127.0.0.1:777 --openvpn 127.0.0.1:$ptvpn --pidfile /var/run/sslh/sslh.pid'" > /etc/default/sslh
+            echo -e "#Modo autónomo\n\nRUN=yes\n\nDAEMON=/usr/sbin/sslh\n\nDAEMON_OPTS='--user sslh --listen 0.0.0.0:443 --ssh 127.0.0.1:22 --ssl 127.0.0.1:$ptssl --http 127.0.0.1:777 --openvpn 127.0.0.1:$ptvpn --timeout 5 --pidfile /var/run/sslh/sslh.pid'" > /etc/default/sslh
             /etc/init.d/sslh start && service sslh start
         }
         echo -e "\n\033[1;32mMENGINSTAL SSLH!\033[0m\n"
