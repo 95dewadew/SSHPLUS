@@ -1111,7 +1111,8 @@ status openvpn-status.log
 verb 3
 #crl-verify crl.pem
 client-to-client
-client-cert-not-required
+#client-cert-not-required
+verify-client-cert none
 username-as-common-name
 #plugin /usr/lib/openvpn/openvpn-plugin-auth-pam.so login
 plugin /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so login" >> /etc/openvpn/server.conf
