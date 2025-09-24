@@ -18,7 +18,11 @@ netstat -nplt| grep -w 'apache2' |grep -w '80' && sed -i "s/Listen 80/Listen 81/
 grep -v "^PasswordAuthentication" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 service ssh restart
-
+###
+apt install fail2ban > /dev/null 2>&1
+systemctl enable fail2ban > /dev/null 2>&1
+apt install vnstat > /dev/null 2>&1
+###
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/addhost.sh -O /bin/addhost > /dev/null 2>&1
 chmod +x /bin/addhost
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/ajuda.sh -O /bin/ajuda > /dev/null 2>&1
