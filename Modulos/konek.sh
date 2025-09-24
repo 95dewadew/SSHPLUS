@@ -502,7 +502,7 @@ else
 	if [[ "$resposta" = 's' ]]; then
 	echo -e "\n\033[1;33mMASUKAN PORT SSL TUNNEL !\033[0m"
 	echo ""
-	read -p "$(echo -e "\033[1;32mPORT YANG DI INGINKAN? \033[1;37m")" -e -i 3128 porta
+	read -p "$(echo -e "\033[1;32mPORT YANG DI INGINKAN? \033[1;37m")" -e -i 442 porta
 	if [[ -z "$porta" ]]; then
 		echo ""
 		echo -e "\033[1;31mPort tidak valid!"
