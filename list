@@ -23,6 +23,27 @@ apt install fail2ban > /dev/null 2>&1
 systemctl enable fail2ban > /dev/null 2>&1
 apt install vnstat > /dev/null 2>&1
 ###
+wget https://www.dropbox.com/s/4wdhkvtp7oeoapm/badvpn-udpgw -O /bin/badvpn-udpgw > /dev/null 2>&1
+chmod +x /bin/badvpn-udpgw
+cat > /etc/systemd/system/badvpn.service <<-END
+[Unit]
+Description=badvpn-udpgw by jagoanssh.com
+After=nss-lookup.target
+
+[Service]
+ExecStart=/bin/badvpn-udpgw --loglevel none --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 1000
+User=nobody
+LimitNPROC=100000
+LimitNOFILE=1000000
+Restart=on-failure
+RestartPreventExitStatus=23
+
+[Install]
+WantedBy=multi-user.target
+END
+systemctl enable badvpn
+systemctl start badvpn
+####
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/addhost.sh -O /bin/addhost > /dev/null 2>&1
 chmod +x /bin/addhost
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/ajuda.sh -O /bin/ajuda > /dev/null 2>&1
