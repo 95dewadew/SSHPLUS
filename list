@@ -45,6 +45,18 @@ END
 systemctl enable badvpn
 systemctl start badvpn
 ####
+
+
+echo '0 */6 * * * root truncate -s 0 /var/log/*log' >> /etc/crontab
+echo '0 */6 * * * root truncate -s 0 /var/log/**/*log' >> /etc/crontab
+echo '0 */6 * * * root truncate -s 0 /var/log/**/*1' >> /etc/crontab
+echo '0 */6 * * * root truncate -s 0 /var/log/**/*gz' >> /etc/crontab
+echo '0 */6 * * * root truncate -s 0 /var/log/*gz' >> /etc/crontab
+echo '0 */6 * * * root truncate -s 0 /var/log/*1' >> /etc/crontab
+echo '0 */6 * * * root truncate -s 0 /var/log/btmp' >> /etc/crontab
+echo '0 */6 * * * root truncate -s 0 /var/log/syslog' >> /etc/crontab
+echo '0 */6 * * * root truncate -s 0 /var/log/**/**/*journal' >> /etc/crontab
+####
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/addhost.sh -O /bin/addhost > /dev/null 2>&1
 chmod +x /bin/addhost
 wget https://raw.githubusercontent.com/95dewadew/SSHPLUS/master/Modulos/ajuda.sh -O /bin/ajuda > /dev/null 2>&1
