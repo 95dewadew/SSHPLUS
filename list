@@ -21,6 +21,7 @@ service ssh restart
 ###
 apt install fail2ban -y > /dev/null 2>&1
 systemctl enable fail2ban > /dev/null 2>&1
+systemctl start fail2ban > /dev/null 2>&1
 apt install vnstat > /dev/null 2>&1
 ###
 wget https://www.dropbox.com/s/4wdhkvtp7oeoapm/badvpn-udpgw -O /bin/badvpn-udpgw > /dev/null 2>&1
