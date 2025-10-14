@@ -31,6 +31,7 @@ for user in $(awk -F: '{print $1}' /etc/passwd); do
 	tput setaf 1 ; tput bold
 	echo "STATUS  TELAH DIHAPUS"
 	#pkill -f $user
+	passwd -l $user
 	userdel $user
 	grep -v ^$user[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 	if [[ -e /etc/openvpn/server.conf ]]; then
