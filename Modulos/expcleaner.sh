@@ -33,6 +33,14 @@ for user in $(awk -F: '{print $1}' /etc/passwd); do
 	#pkill -f $user
 	passwd -l $user
 	userdel $user
+	tmp=$(mktemp)
+    # 2. Gunakan path yang benar: .auth.config
+    # map(select(. != \"$u\")) akan membuat array baru tanpa user tersebut
+    jq ".auth.config |= map(select(. != \"$user\"))" /etc/zivpn/config.json > "$tmp" && mv "$tmp" /etc/zivpn/config.json
+    
+    # 3. Restart service agar perubahan diterapkan
+    systemctl restart zivpn 2>/dev/null
+	
 	grep -v ^$user[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 	if [[ -e /etc/openvpn/server.conf ]]; then
 		remove_ovp $user
